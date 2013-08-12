@@ -96,6 +96,10 @@ Usergrid.Client.prototype.request = function (options, callback) {
 
   //so far so good, so run the query
   var xhr = new XMLHttpRequest();
+  if (typeof XDomainRequest != "undefined") {
+    xhr = new XDomainRequest();
+  }
+
   xhr.open(method, uri, true);
   //add content type = json if there is a json payload
   if (body) {
